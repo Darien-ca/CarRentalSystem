@@ -1,0 +1,103 @@
+﻿@model IEnumerable<CarRentalSystem.Models.Car>
+
+<div class="container">
+    <h2 class="my-4">Explore Cars 100+ cars available</h2>
+    <p class="text-muted">These cars are located in and around Your Area.</p>
+
+    <!-- Search Form -->
+    <form id="searchForm" class="mb-4">
+        <div class="row">
+            <div class="col-md-3">
+                <input type="text" name="searchQuery" class="form-control" placeholder="Search by brand or model">
+            </div>
+            <div class="col-md-2">
+                <input type="number" name="minPrice" class="form-control" placeholder="Min Price">
+            </div>
+            <div class="col-md-2">
+                <input type="number" name="maxPrice" class="form-control" placeholder="Max Price">
+            </div>
+            <div class="col-md-2">
+                <input type="number" name="year" class="form-control" placeholder="Year">
+            </div>
+            <div class="col-md-2">
+                <select name="category" class="form-control">
+                    <option value="">All Categories</option>
+                    <option value="SUV">SUV</option>
+                    <option value="Sedan">Sedan</option>
+                    <option value="Truck">Truck</option>
+                    <option value="Convertible">Convertible</option>
+                    <option value="Luxury">Luxury</option>
+                </select>
+            </div>
+            <div class="col-md-1">
+                <button type="submit" class="btn btn-primary w-100">Search</button>
+            </div>
+        </div>
+    </form>
+
+    <!-- Loading Spinner -->
+    <div id="loadingSpinner" class="text-center my-4" style="display: none;">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+
+    <!-- Available Cars -->
+    <div id="carList" class="row row-cols-1 row-cols-md-3 g-4">
+        @if (Model.Any())
+        {
+            @foreach (var car in Model)
+            {
+                <div class="col">
+                    <div class="card shadow-sm h-100">
+                        @* Display car image *@
+                        <img src="@Url.Content("~/" + car.ImageUrl)"
+                             class="card-img-top"
+                             alt="@car.Brand"
+                             style="height: 200px; object-fit: cover;"
+                             onerror="this.onerror=null;this.src='~/images/placeholder.jpg';" />
+
+                        <div class="card-body">
+                            <h5 class="card-title">@car.Brand @car.Model (@car.Year)</h5>
+                            <p class="card-text">
+                                <strong>$@car.PricePerDay/day</strong>
+                            </p>
+                            <a href="/Cars/Details/@car.CarId" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="col-12">
+                <p class="text-muted text-center">No cars found matching your search criteria.</p>
+            </div>
+        }
+    </div>
+</div>
+
+<!-- AJAX Script -->
+<script>
+    $(document).ready(function () {
+        $("#searchForm").submit(function (e) {
+            e.preventDefault(); // Preventing form submission and full-page reload
+
+            $.ajax({
+                url: '/Cars/GetFilteredCars',
+                method: 'GET',
+                data: $(this).serialize(),
+                beforeSend: function () {
+                    $("#loadingSpinner").show(); // Show the spinner while loading
+                },
+                success: function (data) {
+                    $("#loadingSpinner").hide(); // Hide the spinner when loading completes
+                    $("#carList").html(data); // Update the car list with the new results
+                },
+                error: function () {
+                    alert("Something went wrong. Please try again.");
+                }
+            });
+        });
+    });
+</script>

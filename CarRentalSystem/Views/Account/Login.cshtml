@@ -1,0 +1,49 @@
+﻿@model CarRentalSystem.ViewModels.LoginViewModel
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h2 class="text-center mb-4">Login</h2>
+
+            <!-- Validation Summary -->
+            <div class="alert alert-danger d-none" role="alert">
+                Please fix the errors below.
+            </div>
+
+            <form asp-action="Login" method="post" class="p-4 shadow-sm rounded bg-light">
+                <div class="mb-3">
+                    <label asp-for="Email" class="form-label fw-bold">Email Address</label>
+                    <input asp-for="Email" class="form-control" aria-describedby="emailHelp" placeholder="Enter your email" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Password" class="form-label fw-bold">Password</label>
+                    <input asp-for="Password" type="password" class="form-control" placeholder="Enter your password" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-check mb-3">
+                    <input asp-for="RememberMe" class="form-check-input" id="rememberMe" />
+                    <label asp-for="RememberMe" class="form-check-label fw-normal" for="rememberMe">Remember Me</label>
+                </div>
+                <button type="submit" class="btn btn-primary w-100 py-2">Login</button>
+            </form>
+
+            <div class="text-center mt-4">
+                <a asp-action="Register" class="text-decoration-none text-primary">Register Now</a> |
+                <a asp-action="ForgotPassword" class="text-decoration-none text-primary">Forgot Password?</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+    <script>
+        // Show validation summary if there are any validation errors
+        $(document).ready(function () {
+            if ($(".text-danger").filter(function () { return $(this).text().trim().length > 0; }).length > 0) {
+                $(".alert-danger").removeClass("d-none").text("Please fix the errors below.");
+            }
+        });
+    </script>
+}

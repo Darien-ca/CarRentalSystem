@@ -1,0 +1,19 @@
+﻿<div class="container mt-5">
+    <h1 class="text-center">@Model.Brand @Model.Model (@Model.Year)</h1>
+    <div class="row">
+        <div class="col-md-6">
+            <img src="~/@Model.ImageUrl" alt="@Model.Brand @Model.Model" class="img-fluid" />
+        </div>
+        <div class="col-md-6">
+            <p><strong>Price per Day:</strong> $@Model.PricePerDay</p>
+            <p><strong>Availability:</strong> @Model.Availability</p>
+            <p><strong>Description:</strong> @Model.Description</p>
+            <p><strong>Mileage:</strong> @Model.Mileage km</p>
+            <p><strong>Fuel Type:</strong> @Model.FuelType</p>
+            <p><strong>Transmission:</strong> @Model.Transmission</p>
+            <p><strong>Seats:</strong> @Model.Seats</p>
+            <p><strong>Location:</strong> @Model.Location</p>
+        </div>
+    </div>
+    <a href="/Cars" class="btn btn-primary mt-3">Back to Cars</a>
+</div>

@@ -1,0 +1,125 @@
+﻿@model CarRentalSystem.Models.Car
+
+<h1 class="text-center mt-4">Add a New Car</h1>
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <form asp-action="Create" method="post" enctype="multipart/form-data">
+            @* Brand *@
+            <div class="form-group">
+                <label asp-for="Brand" class="form-label"></label>
+                <input asp-for="Brand" class="form-control" placeholder="Enter the brand" />
+                <span asp-validation-for="Brand" class="text-danger"></span>
+            </div>
+
+            @* Model *@
+            <div class="form-group">
+                <label asp-for="Model" class="form-label"></label>
+                <input asp-for="Model" class="form-control" placeholder="Enter the model" />
+                <span asp-validation-for="Model" class="text-danger"></span>
+            </div>
+
+            @* Year *@
+            <div class="form-group">
+                <label asp-for="Year" class="form-label"></label>
+                <input asp-for="Year" type="number" class="form-control" placeholder="Enter the manufacturing year" />
+                <span asp-validation-for="Year" class="text-danger"></span>
+            </div>
+
+            @* Price Per Day *@
+            <div class="form-group">
+                <label asp-for="PricePerDay" class="form-label"></label>
+                <input asp-for="PricePerDay" type="number" step="0.01" class="form-control" placeholder="Enter the rental price per day" />
+                <span asp-validation-for="PricePerDay" class="text-danger"></span>
+            </div>
+            @* Category*@
+            <div class="form-group">
+                <label for="Category">Category</label>
+                <select id="Category" name="Category" class="form-control">
+                    <option value="">Select Category</option>
+                    <option value="SUV">SUV</option>
+                    <option value="Sedan">Sedan</option>
+                    <option value="Truck">Truck</option>
+                    <option value="Sports Car">Sports Car</option>
+                    <option value="Van">Van</option>
+                </select>
+            </div>
+
+            @* Availability *@
+            <div class="form-group form-check">
+                <input asp-for="Availability" class="form-check-input" type="checkbox" />
+                <label asp-for="Availability" class="form-check-label">Available</label>
+                <span asp-validation-for="Availability" class="text-danger"></span>
+            </div>
+
+            @* Image Upload *@
+            <div class="form-group">
+                <label asp-for="ImageUrl" class="form-label">Car Image</label>
+                <input asp-for="ImageUrl" class="form-control-file" type="file" name="carImage"/>
+                <span asp-validation-for="ImageUrl" class="text-danger"></span>
+            </div>
+
+            @* Description *@
+            <div class="form-group">
+                <label asp-for="Description" class="form-label"></label>
+                <textarea asp-for="Description" class="form-control" placeholder="Provide additional details about the car"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            @* Mileage *@
+            <div class="form-group">
+                <label asp-for="Mileage" class="form-label"></label>
+                <input asp-for="Mileage" type="number" class="form-control" placeholder="Enter mileage (km)" />
+                <span asp-validation-for="Mileage" class="text-danger"></span>
+            </div>
+
+            @* Fuel Type *@
+            <div class="form-group">
+                <label asp-for="FuelType" class="form-label"></label>
+                <select asp-for="FuelType" class="form-control">
+                    <option value="">Select Fuel Type</option>
+                    <option value="Gasoline">Gasoline</option>
+                    <option value="Diesel">Diesel</option>
+                    <option value="Electric">Electric</option>
+                    <option value="Hybrid">Hybrid</option>
+                </select>
+                <span asp-validation-for="FuelType" class="text-danger"></span>
+            </div>
+
+            @* Transmission *@
+            <div class="form-group">
+                <label asp-for="Transmission" class="form-label"></label>
+                <select asp-for="Transmission" class="form-control">
+                    <option value="">Select Transmission</option>
+                    <option value="Automatic">Automatic</option>
+                    <option value="Manual">Manual</option>
+                </select>
+                <span asp-validation-for="Transmission" class="text-danger"></span>
+            </div>
+
+            @* Seats *@
+            <div class="form-group">
+                <label asp-for="Seats" class="form-label"></label>
+                <input asp-for="Seats" type="number" class="form-control" placeholder="Enter the number of seats" />
+                <span asp-validation-for="Seats" class="text-danger"></span>
+            </div>
+
+            @* Location *@
+            <div class="form-group">
+                <label asp-for="Location" class="form-label"></label>
+                <input asp-for="Location" class="form-control" placeholder="Enter the location (e.g., Toronto, ON)" />
+                <span asp-validation-for="Location" class="text-danger"></span>
+            </div>
+
+            @* Submit Button *@
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-primary">Create</button>
+                <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

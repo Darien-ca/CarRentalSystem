@@ -1,0 +1,8 @@
+C:\Users\darie\source\repos\CarRentalSystem\CarRentalSystem\obj\Debug\net8.0\CarRentalSystem.csproj.AssemblyReference.cache
+C:\Users\darie\source\repos\CarRentalSystem\CarRentalSystem\obj\Debug\net8.0\CarRentalSystem.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\darie\source\repos\CarRentalSystem\CarRentalSystem\obj\Debug\net8.0\CarRentalSystem.AssemblyInfoInputs.cache
+C:\Users\darie\source\repos\CarRentalSystem\CarRentalSystem\obj\Debug\net8.0\CarRentalSystem.AssemblyInfo.cs
+C:\Users\darie\source\repos\CarRentalSystem\CarRentalSystem\obj\Debug\net8.0\CarRentalSystem.csproj.CoreCompileInputs.cache
+C:\Users\darie\source\repos\CarRentalSystem\CarRentalSystem\obj\Debug\net8.0\CarRentalSystem.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\darie\source\repos\CarRentalSystem\CarRentalSystem\obj\Debug\net8.0\CarRentalSystem.RazorAssemblyInfo.cache
+C:\Users\darie\source\repos\CarRentalSystem\CarRentalSystem\obj\Debug\net8.0\CarRentalSystem.RazorAssemblyInfo.cs

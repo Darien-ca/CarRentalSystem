@@ -1,0 +1,79 @@
+﻿@model List<string>
+
+<ul class="navbar-nav flex-grow-1">
+    @foreach (var item in Model)
+    {
+        <li class="nav-item">
+            @if (item == "Home")
+            {
+                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">@item</a>
+            }
+            else if (item == "Cars")
+            {
+                <a class="nav-link text-dark" asp-area="" asp-controller="Cars" asp-action="Index">@item</a>
+            }
+            else if (item == "Add Car")
+            {
+                @if (User.Identity != null && User.Identity.IsAuthenticated)
+                {
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Cars" asp-action="Create">@item</a>
+                }
+            }
+            else if (item == "About Us")
+            {
+                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="AboutUs">@item</a>
+            }
+            else if (item == "Contact Us")
+            {
+                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="ContactUs">@item</a>
+            }
+        </li>
+    }
+
+    <!-- Deals Section -->
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Deals" asp-action="Index">Deals</a>
+    </li>
+
+    <!-- Explore Dropdown -->
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle text-dark" href="#" id="exploreDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Explore
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="exploreDropdown">
+            <li><a class="dropdown-item" asp-controller="Explore" asp-action="BecomeHost">Become a Host</a></li>
+            <li><a class="dropdown-item" asp-controller="Explore" asp-action="HowItWorks">How It Works</a></li>
+            <li><a class="dropdown-item" asp-controller="Explore" asp-action="FAQ">FAQ</a></li>
+        </ul>
+    </li>
+</ul>
+
+<!-- Right-Side Profile Dropdown -->
+<ul class="navbar-nav ms-auto">
+    @if (User.Identity != null && User.Identity.IsAuthenticated)
+    {
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-dark" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Profile
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+                <li><a class="dropdown-item" asp-area="" asp-controller="Profile" asp-action="MyAccount">My Account</a></li>
+                @* <li><a class="dropdown-item" asp-area="" asp-controller="Profile" asp-action="Settings">Settings</a></li> *@
+                <li>
+                    <form asp-controller="Account" asp-action="Logout" method="post" class="form-inline">
+                        <button type="submit" class="dropdown-item">Logout</button>
+                    </form>
+                </li>
+            </ul>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Register">Register</a>
+        </li>
+    }
+</ul>

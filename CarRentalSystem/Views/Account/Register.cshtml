@@ -1,0 +1,68 @@
+﻿@model CarRentalSystem.ViewModels.RegisterViewModel
+
+@{
+    ViewBag.Title = "Register";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h2 class="text-center mb-4">Create an Account</h2>
+
+            <!-- Registration Form -->
+            @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "p-4 shadow-sm rounded bg-light border" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="mb-3">
+                    @Html.LabelFor(m => m.FirstName, "First Name", htmlAttributes: new { @class = "form-label fw-bold" })
+                    @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", placeholder = "First Name" })
+                    @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger small" })
+                </div>
+
+                <div class="mb-3">
+                    @Html.LabelFor(m => m.LastName, "Last Name", htmlAttributes: new { @class = "form-label fw-bold" })
+                    @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", placeholder = "Last Name"})
+                    @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger small" })
+                </div>
+
+                <div class="mb-3">
+                    @Html.LabelFor(m => m.Email, "Email Address", htmlAttributes: new { @class = "form-label fw-bold" })
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email Address" })
+                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger small" })
+                </div>
+
+                <div class="mb-3">
+                    @Html.LabelFor(m => m.Password, "Password", htmlAttributes: new { @class = "form-label fw-bold" })
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "At least 6 characters" })
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger small" })
+                </div>
+
+                <div class="mb-3">
+                    @Html.LabelFor(m => m.ConfirmPassword, "Confirm Password", htmlAttributes: new { @class = "form-label fw-bold" })
+                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = "Retype your password" })
+                    @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger small" })
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100 py-2">Register</button>
+            }
+
+            <div class="text-center mt-4">
+                <span class="text-muted">Already have an account? </span>
+                <a asp-action="Login" class="text-decoration-none text-primary fw-bold">Log in</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+    <script>
+        // Show validation summary dynamically if errors exist
+        $(document).ready(function () {
+            if ($(".text-danger").filter(function () { return $(this).text().trim().length > 0; }).length > 0) {
+                alert("Please fix the errors below before submitting.");
+            }
+        });
+    </script>
+}

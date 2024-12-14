@@ -1,0 +1,31 @@
+﻿@model IEnumerable<CarRentalSystem.Models.Car>
+
+@if (Model.Any())
+{
+    @foreach (var car in Model)
+    {
+        <div class="col">
+            <div class="card shadow-sm h-100">
+                <img src="@Url.Content("~/" + car.ImageUrl)"
+                     class="card-img-top"
+                     alt="@car.Brand"
+                     style="height: 200px; object-fit: cover;"
+                     onerror="this.onerror=null;this.src='~/images/placeholder.jpg';" />
+
+                <div class="card-body">
+                    <h5 class="card-title">@car.Brand @car.Model (@car.Year)</h5>
+                    <p class="card-text">
+                        <strong>$@car.PricePerDay/day</strong>
+                    </p>
+                    <a href="/Cars/Details/@car.CarId" class="btn btn-primary">View Details</a>
+                </div>
+            </div>
+        </div>
+    }
+}
+else
+{
+    <div class="col-12">
+        <p class="text-muted text-center">No cars found matching your search criteria.</p>
+    </div>
+}

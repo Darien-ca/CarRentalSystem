@@ -1,0 +1,29 @@
+﻿@model CarRentalSystem.Models.Car
+
+<div class="card border-info mb-3" style="max-width: 18rem;">
+    <!-- Car Image -->
+    <div class="card-header">
+        <img src="@Url.Content(Model.ImageUrl)" alt="@Model.Brand @Model.Model" class="card-img-top" />
+    </div>
+
+    <!-- Car Details -->
+    <div class="card-body">
+        <h5 class="card-title">@Model.Brand @Model.Model</h5>
+        <p class="card-text">
+            <strong>Year:</strong> @Model.Year<br />
+            <strong>Price Per Day:</strong> @Model.PricePerDay.ToString("C")
+        </p>
+        <p class="card-text">
+            <!-- Availability -->
+            <strong>Availability:</strong>
+            @if (Model.Availability)
+            {
+                <span class="badge bg-success text-white">Available</span>
+            }
+            else
+            {
+                <span class="badge bg-danger text-white">Not Available</span>
+            }
+        </p>
+    </div>
+</div>

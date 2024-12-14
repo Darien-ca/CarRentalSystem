@@ -1,0 +1,88 @@
+﻿@model CarRentalSystem.ViewModels.HomeViewModel
+
+<div class="container">
+    <!-- Hero Section -->
+    <div class="hero-banner text-center text-white"
+         style="background-image: url('/images/hero-banner.jpg'); background-size: cover; background-position: center; padding: 100px 20px;">
+        <h1>Welcome to CarRentalSystem.ca</h1>
+        <p>Your trusted car rental partner.</p>
+        <a href="/Cars" class="btn btn-primary btn-lg">Explore Cars</a>
+    </div>
+
+    <!-- Add Big Title Section -->
+    <div class="container text-center my-5">
+        <h2 class="display-4">Skip the rental car counter</h2>
+        <p class="lead">Rent just about any car, just about anywhere</p>
+    </div>
+
+    <!-- Search Section -->
+    @* <div class="row my-5"> *@
+    @*     <div class="text-center"> *@
+    @*         <h2>Search for Cars</h2> *@
+    @*         <form method="get" action="/Cars/Search" class="mt-4"> *@
+    @*             <div class="form-group"> *@
+    @*                 <input type="text" class="form-control" name="query" placeholder="Search by brand, model, or year" /> *@
+    @*             </div> *@
+    @*             <button type="submit" class="btn btn-primary mt-3">Search</button> *@
+    @*         </form> *@
+
+    @*     </div> *@
+
+    @* </div> *@
+
+    <!-- Featured Cars Section -->
+    @if (Model.FeaturedCars != null && Model.FeaturedCars.Any())
+    {
+        <section class="featured-cars my-5">
+            <h2 class="text-center">Featured Cars</h2>
+            <div class="row">
+                @foreach (var car in Model.FeaturedCars)
+                {
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm">
+                            <img src="@Url.Content("~/" + car.ImageUrl)" class="card-img-top" alt="@car.Model" style="height: 200px; object-fit: cover;" />
+                            @* <img src="@Url.Content("~/" + car.ImageUrl)" alt="@car.Model" /> *@
+
+                            <div class="card-body text-center">
+                                <h5 class="card-title">@car.Brand @car.Model (@car.Year)</h5>
+                                <p class="card-text">$@car.PricePerDay/day</p>
+                                <a href="/Cars/Details/@car.CarId" class="btn btn-primary">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </section>
+    }
+    else
+    {
+        <div class="text-center">
+            <h3>No featured cars available at the moment.</h3>
+        </div>
+    }
+
+    <!-- Why Choose Us Section -->
+    <section class="why-choose-us py-5">
+        <div class="container text-center">
+            <h2>Why Choose Us?</h2>
+            <p>We offer affordable rates, premium customer service, and a wide selection of cars to fit your needs.</p>
+            <div class="row">
+                <div class="col-md-4">
+                    <i class="fas fa-car fa-3x mb-3"></i>
+                    <h4>Wide Variety</h4>
+                    <p>Choose from economy, luxury, and family cars.</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="fas fa-money-check-alt fa-3x mb-3"></i>
+                    <h4>Affordable Rates</h4>
+                    <p>Competitive pricing for every budget.</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="fas fa-headset fa-3x mb-3"></i>
+                    <h4>24/7 Support</h4>
+                    <p>We're here to assist you anytime.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

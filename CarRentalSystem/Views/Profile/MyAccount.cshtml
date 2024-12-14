@@ -1,0 +1,60 @@
+﻿@{
+    ViewData["Title"] = "My Account";
+}
+
+<div class="container">
+    <h2>My Account</h2>
+    <p>Manage your account details, update your settings, and change your password.</p>
+
+  
+
+    <!-- Editable Account Details -->
+    <h3>Account Details</h3>
+    <form asp-controller="Profile" asp-action="UpdateAccount" method="post">
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="FirstName" class="form-label">First Name</label>
+                <input type="text" class="form-control" id="FirstName" name="FirstName" value="@Model.FirstName" required />
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="LastName" class="form-label">Last Name</label>
+                <input type="text" class="form-control" id="LastName" name="LastName" value="@Model.LastName" required />
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="Email" class="form-label">Email Address</label>
+                <input type="email" class="form-control" id="Email" name="Email" value="@Model.Email" readonly />
+            </div>
+            @* <div class="col-md-6 mb-3"> *@
+            @*     <label for="PhoneNumber" class="form-label">Phone Number</label> *@
+            @*     <input type="tel" class="form-control" id="PhoneNumber" name="PhoneNumber" value="@Model.PhoneNumber" /> *@
+            @* </div> *@
+            @* <div class="col-md-12 mb-3"> *@
+            @*     <label for="Address" class="form-label">Address</label> *@
+            @*     <textarea class="form-control" id="Address" name="Address">@Model.Address</textarea> *@
+            @* </div> *@
+        </div>
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+    </form>
+
+    <hr />
+
+    <!-- Password Update Section -->
+    <h3>Change Password</h3>
+    <form asp-controller="Profile" asp-action="ChangePassword" method="post">
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="CurrentPassword" class="form-label">Current Password</label>
+                <input type="password" class="form-control" id="CurrentPassword" name="CurrentPassword" required />
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="NewPassword" class="form-label">New Password</label>
+                <input type="password" class="form-control" id="NewPassword" name="NewPassword" required />
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="ConfirmPassword" class="form-label">Confirm New Password</label>
+                <input type="password" class="form-control" id="ConfirmPassword" name="ConfirmPassword" required />
+            </div>
+        </div>
+        <button type="submit" class="btn btn-warning">Update Password</button>
+    </form>
+</div>

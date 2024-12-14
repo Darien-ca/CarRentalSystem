@@ -1,0 +1,13 @@
+﻿@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<div class="container mt-5">
+    <h1>Admin Dashboard</h1>
+    <p>Welcome to the Admin Dashboard. Use the links below to manage the application:</p>
+    <ul>
+        <li><a asp-action="ManageUsers" asp-controller="Admin">Manage Users</a></li>
+        <a asp-controller="Admin" asp-action="ManageCars">Manage Cars</a>
+     
+    </ul>
+</div>

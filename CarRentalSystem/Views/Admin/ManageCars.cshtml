@@ -1,0 +1,32 @@
+﻿@model IEnumerable<CarRentalSystem.Models.Car>
+
+<div class="container">
+    <h2 class="my-4">Manage Cars</h2>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Brand</th>
+                <th>Model</th>
+                <th>Year</th>
+                <th>Price Per Day</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var car in Model)
+            {
+                <tr>
+                    <td>@car.Brand</td>
+                    <td>@car.Model</td>
+                    <td>@car.Year</td>
+                    <td>@car.PricePerDay</td>
+                    <td>
+                        <a href="/Cars/Edit/@car.CarId" class="btn btn-primary btn-sm">Edit</a>
+                        <a href="/Cars/Delete/@car.CarId" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

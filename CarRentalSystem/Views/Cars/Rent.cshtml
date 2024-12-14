@@ -1,0 +1,9 @@
+﻿<h2>Rent @Model.Brand @Model.Model</h2>
+<form asp-action="ConfirmRent" method="post">
+    <input type="hidden" name="CarId" value="@Model.CarId" />
+    <label>Start Date:</label>
+    <input type="date" name="StartDate" required />
+    <label>End Date:</label>
+    <input type="date" name="EndDate" required />
+    <button type="submit">Confirm Rental</button>
+</form>

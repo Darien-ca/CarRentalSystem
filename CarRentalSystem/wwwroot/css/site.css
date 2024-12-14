@@ -1,0 +1,212 @@
+/* Global Reset and Layout Adjustments */
+html, body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#content {
+    flex: 1;
+    min-height: calc(100vh - 100px); /* Adjust based on header/footer height */
+}
+
+/* Images */
+img {
+    display: block;
+    max-width: 100%; /* Ensure the image fits its container */
+    height: auto; /* Maintain aspect ratio */
+    position: relative;
+    z-index: 1;
+}
+
+/* Footer */
+footer {
+    background-color: #f8f9fa; /* Light gray background */
+    padding: 10px 0; /* Add some spacing */
+    border-top: 1px solid #ddd; /* Subtle top border */
+    text-align: center; /* Center-align text */
+    position: fixed; /* Fix the footer at the bottom */
+    bottom: 0;
+    width: 100%;
+    clear: both;
+}
+
+    footer p {
+        margin: 0; /* Remove default margin */
+        font-size: 14px; /* Adjust font size */
+        color: #6c757d; /* Gray color for text */
+    }
+
+    footer a {
+        color: #007bff; /* Link color */
+        text-decoration: none; /* Remove underline */
+    }
+
+        footer a:hover {
+            text-decoration: underline; /* Underline on hover */
+        }
+
+/* Card Layout */
+.card {
+    max-width: 400px; /* Restrict card width */
+    margin: 0 auto; /* Center-align card if needed */
+    border-radius: 10px;
+    border: none;
+    overflow: hidden; /* Prevent overflow */
+    height: auto; /* Ensure dynamic scaling */
+}
+
+    .card img {
+        height: 200px; /* Fixed image height */
+        object-fit: cover; /* Ensure images fit nicely */
+    }
+
+.card-body {
+    padding: 20px; /* Compact padding for cards */
+}
+
+.card-title {
+    font-size: 20px; /* Title font size */
+}
+
+.card-text {
+    font-size: 15px; /* Text font size */
+}
+
+.card-header {
+    background-color: #007bff;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Form Adjustments */
+form {
+    margin-left: 0; /* Align forms to the left */
+}
+
+label {
+    font-size: 14px; /* Adjust font size for labels */
+    margin-bottom: 5px;
+}
+
+input.form-control {
+    height: 35px; /* Smaller input box height */
+    font-size: 14px; /* Adjust font size */
+    padding: 5px 8px; /* Compact padding */
+    border-radius: 5px; /* Rounded corners */
+    max-width: 300px; /* Restrict input box width */
+    margin: 0 auto 15px auto; /* Center align inputs and add spacing below */
+}
+
+button {
+    font-size: 14px; /* Adjust button font size */
+    padding: 6px 12px; /* Compact padding for buttons */
+}
+
+/* Heading Adjustments */
+h2 {
+    font-size: 24px; /* Adjust heading size */
+    margin-bottom: 20px; /* Spacing below heading */
+}
+
+/* Form Layout for Login and Registration */
+.container {
+    margin-top: 20px;
+}
+
+.row {
+    justify-content: flex-start; /* Align forms to the left */
+}
+
+.col-md-6 {
+    max-width: 500px; /* Restrict the width of forms */
+}
+
+/* Login Form Specific Styles */
+.login-form {
+    text-align: left; /* Align the form text to the left */
+}
+
+    .login-form input {
+        margin-bottom: 10px; /* Add spacing between inputs */
+    }
+
+/* Privacy Alignment Fix */
+.privacy {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+.form-control {
+    max-width: 100%; /* Ensure it does not center-align due to container behavior */
+    height: 35px; /* Smaller height */
+    font-size: 14px; /* Adjust font size */
+    padding: 5px 8px; /* Adjust padding */
+    text-align: left; /* Ensure left-aligned text */
+}
+
+.container .row {
+    justify-content: flex-start; /* Aligns content to the left */
+}
+
+button {
+    font-size: 14px; /* Adjust button font size */
+    padding: 6px 12px; /* Adjust button padding */
+}
+
+.hero-banner {
+    background-image: url('/images/hero-banner.jpg'); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+    padding: 100px 20px;
+    color: #F8FAFC; /* Light gray text */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: rgba(30, 58, 138, 0.85); /* Overlay with primary color */
+}
+
+    .hero-banner h1 {
+        font-size: 3rem;
+        color: #FFFFFF;
+        margin-bottom: 20px;
+    }
+
+    .hero-banner p {
+        font-size: 1.25rem;
+        color: #E0F2FE; /* Soft cyan */
+        margin-bottom: 30px;
+    }
+
+    .hero-banner .btn {
+        font-size: 1.2rem;
+        padding: 10px 30px;
+        background-color: #38BDF8; /* Cyan button */
+        border: none;
+        color: #1E293B; /* Dark text for contrast */
+        border-radius: 25px;
+        transition: all 0.3s ease;
+    }
+
+        .hero-banner .btn:hover {
+            background-color: #1E3A8A; /* Deep blue */
+            color: #F8FAFC;
+        }
+.hero-banner {
+    background-image: url('/images/hero-banner.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 100px 20px;
+    color: #F8FAFC;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: rgba(30, 58, 138, 0.85); /* Overlay */
+}
